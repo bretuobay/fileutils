@@ -29,6 +29,16 @@ class FileSplitter(object):
 
         return elem
 
+
+    def get_records(self):
+
+        content = res =  defaultdict(list)
+        content = self.split_text()
+        for i, val in enumerate(content):
+                res[i] = self.get_record(i)
+        return res
+
+
     def json_record(self,index):
 
         return json.dumps(self.get_record(index))
@@ -36,21 +46,11 @@ class FileSplitter(object):
 
     def json_records(self):
 
-         return json.dumps(self.get_data_for_db())
+         return json.dumps(self.get_records())
 
-
-    def get_data_for_db(self):
-
-         content = res =  defaultdict(list)
-
-         content = self.split_text()
-         for i, val in enumerate(content):
-             res[i] = self.get_record(i)
-
-         return res
 
 
 if __name__ == "__main__":
     file_obj = FileSplitter('ANCLI_000024_2015.TXT')
     print file_obj.json_records()
-    #print file_obj.get_record(0)
+    print file_obj.json_record(0)

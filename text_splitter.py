@@ -52,5 +52,5 @@ class FileSplitter(object):
 
 if __name__ == "__main__":
     file_obj = FileSplitter('ANCLI_000024_2015.TXT')
-    print file_obj.json_records('|')
-    print file_obj.json_record(0,'|')
+    print (file_obj.json_records('|'))
+    print (file_obj.json_record(0,'|'))

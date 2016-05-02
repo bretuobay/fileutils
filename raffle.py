@@ -5,15 +5,33 @@ class raffle(object):
 
     def __init__(self,lotto_file):
         self.data = lotto_file
-
+        self.entries = defaultdict(list)
         lotto_splitter = FileSplitter(self.data)
-        lines = lotto_splitter.split_text()
-        #print lines
-        for nums, jolly in enumerate(lines):
-            print jolly*
+        lines = lotto_splitter.split_text(',')
+        num_line = len(lines)
+
+        while(num_line>=0):
+            for ind, row in enumerate(lines[num_line]):
+                row[-1] = row[-1].rstrip('\n')
+                self.entries[num_line] = row
+            num_line = num_line - 1
+
+
+    def get_all_entries(self):
+        print (self.entries)
+
+
+    def get_frequent(self):
+        from collections import Counter
+        word_counts = Counter(self.entries)
+        top_three = word_counts.most_common(3)
+        print(top_three)
+
+
 
 
 
 
 if __name__ == "__main__":
-    file_obj = raffle('lotto.txt')
+    obj = raffle('lotto.txt')
+    obj.get_frequent()

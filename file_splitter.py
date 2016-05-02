@@ -26,6 +26,7 @@ class FileSplitter(object):
         return line_data
 
     def get_record(self,index):
+
         elem = defaultdict(dict)
         content = self.split_text()[index][0]
 

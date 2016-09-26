@@ -22,10 +22,10 @@ class raffle(object):
 
 
     def get_frequent(self):
-        from collections import Counter
-        word_counts = Counter(self.entries)
-        top_three = word_counts.most_common(3)
-        print(top_three)
+
+        
+
+
 
 
 
